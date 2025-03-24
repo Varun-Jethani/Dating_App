@@ -21,6 +21,14 @@ import LocationScreen from '../screens/More-You-Share/LocationScreen';
 import GenderScreen from '../screens/More-You-Share/GenderScreen';
 import DatingPreferences from '../screens/More-You-Share/DatingPreferences';
 import DatingType from '../screens/More-You-Share/DatingType';
+import HeightScreen from '../screens/More-You-Share/HeightScreen';
+import ReligionScreen from '../screens/More-You-Share/ReligionScreen';
+import HomeTownScreen from '../screens/More-You-Share/HomeTownScreen';
+import CollegeScreen from '../screens/More-You-Share/CollegeScreen';
+import DrinkScreen from '../screens/More-You-Share/DrinkScreen';
+import FoodScreen from '../screens/More-You-Share/FoodPreferencesScreen';
+import LangScreen from '../screens/More-You-Share/MotherTongueScreen';
+import PhotoScreen from '../screens/Profile/PhotoScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -152,6 +160,46 @@ const AuthStack = () => {
       <Stack.Screen
         name="Preferences"
         component={DatingPreferences}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Height"
+        component={HeightScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Religion"
+        component={ReligionScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HomeTown"
+        component={HomeTownScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="College"
+        component={CollegeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Drink"
+        component={DrinkScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Food"
+        component={FoodScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Language"
+        component={LangScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Photos"
+        component={PhotoScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -5,40 +5,63 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Header = ({iconName, title, subtitle}) => {
   return (
     <View style={styles.headerContainer}>
-      <View style={styles.iconContainer}>
-        <MaterialCommunityIcons name={iconName} size={26} color={'black'} />
+      <View style={styles.topRow}>
+        <MaterialCommunityIcons
+          name={iconName}
+          size={24}
+          color={'#2C3E50'}
+          style={styles.icon}
+        />
+        <View style={styles.dot} />
       </View>
+
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
+
+      <View style={styles.underline} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
-    alignItems: 'left',
-    marginBottom: 20,
+    paddingTop: 20,
+    paddingBottom: 16,
+    paddingHorizontal: 0,
+    backgroundColor: '#FFFFFF',
   },
-  iconContainer: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    borderWidth: 2,
-    borderColor: 'black',
-    justifyContent: 'center',
+  topRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginBottom: 12,
+  },
+  icon: {
+    // Icon styling without a container
+  },
+  dot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#3498DB',
+    marginLeft: 8,
   },
   title: {
-    fontSize: 48,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 6,
+    color: '#2C3E50',
+    marginBottom: 4,
+    letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 22,
-    color: '#999',
-    marginBottom: 30,
+    fontSize: 18,
+    color: '#7F8C8D',
+    marginBottom: 12,
+  },
+  underline: {
+    height: 2,
+    width: '100%',
+    backgroundColor: '#3498DB',
+    marginTop: 4,
   },
 });
 

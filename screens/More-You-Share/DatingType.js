@@ -15,7 +15,7 @@ import NextButton from '../../components/NextButton';
 import Header from '../../components/Header';
 
 const DatingIntentions = ({navigation, route}) => {
-  const currentStep = 4;
+  const currentStep = 3;
   // Get the next screen from route params or default to a fallback
   const nextScreen = route.params?.nextScreen || 'Preferences';
 
@@ -72,10 +72,9 @@ const DatingIntentions = ({navigation, route}) => {
               </Pressable>
             ))}
           </ScrollView>
-
-          <NextButton onPress={handleContinue} />
         </View>
       </View>
+      <NextButton onPress={handleContinue} />
     </SafeAreaView>
   );
 };

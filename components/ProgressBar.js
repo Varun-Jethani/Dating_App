@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 const ProgressBar = ({step}) => {
-  const totalSteps = 6;
+  const totalSteps = 20;
   // Calculate percentage of completion
   const progress = (step / totalSteps) * 100;
 

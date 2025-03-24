@@ -13,8 +13,8 @@ const NextButton = ({onPress}) => {
 const styles = StyleSheet.create({
   nextButton: {
     position: 'absolute',
-    bottom: 5,
-    right: 20,
+    bottom: 30,
+    right: 15,
     backgroundColor: '#000',
     height: 50,
     width: 50,

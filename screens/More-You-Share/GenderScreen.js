@@ -8,13 +8,11 @@ import {
   Pressable,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ProgressBar from '../../components/ProgressBar';
 import NextButton from '../../components/NextButton';
 import Header from '../../components/Header';
-// Import your user context if you have one
-// import { UserContext } from '../../context/UserContext';
 
 const GenderScreen = ({navigation, route}) => {
   const currentStep = 2;
@@ -59,7 +57,7 @@ const GenderScreen = ({navigation, route}) => {
       <ProgressBar step={currentStep} />
       <View style={styles.contentContainer}>
         <Header
-          iconName="newspaper-variant-outline"
+          iconName="eye"
           title="Which gender describes you the best?"
           subtitle="Select one of the following options."
         />
@@ -82,10 +80,9 @@ const GenderScreen = ({navigation, route}) => {
               </Pressable>
             ))}
           </ScrollView>
-
-          <NextButton onPress={() => navigation.navigate('Intention')} />
         </View>
       </View>
+      <NextButton onPress={() => navigation.navigate('Intention')} />
     </SafeAreaView>
   );
 };
