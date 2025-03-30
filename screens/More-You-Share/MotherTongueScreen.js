@@ -43,7 +43,7 @@ const languages = [
 const LanguageScreen = ({navigation}) => {
   const [motherTongue, setMotherTongue] = useState('');
   const [knownLanguages, setKnownLanguages] = useState([]);
-  const currentStep = 2;
+  const currentStep = 11;
 
   const toggleMotherTongue = language => {
     if (motherTongue === language) {

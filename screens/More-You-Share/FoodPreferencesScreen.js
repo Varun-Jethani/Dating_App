@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const FoodScreen = ({navigation}) => {
   const [foodPreference, setFoodPreference] = useState('');
-  const currentStep = 9;
+  const currentStep = 10;
 
   const foodOptions = [
     {

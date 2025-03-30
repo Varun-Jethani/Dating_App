@@ -29,6 +29,14 @@ import DrinkScreen from '../screens/More-You-Share/DrinkScreen';
 import FoodScreen from '../screens/More-You-Share/FoodPreferencesScreen';
 import LangScreen from '../screens/More-You-Share/MotherTongueScreen';
 import PhotoScreen from '../screens/Profile/PhotoScreen';
+import {PromptScreen, ShowPromptsScreen} from '../screens/Profile/PromptScreen';
+import AnswerPromptScreen from '../screens/Profile/AnswerPrompt';
+import MovieRecommendationScreen from '../screens/Profile/MoviesScreen';
+import SpotifyTopMusicScreen from '../screens/Profile/LinkSpotifyScreen';
+import InterestsScreen from '../screens/Profile/InterestsScreen';
+import OneWordScreen from '../screens/Profile/OneWordScreen';
+import MemeScreen from '../screens/Profile/MemeScreen';
+import BioScreen from '../screens/Profile/BioScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -200,6 +208,51 @@ const AuthStack = () => {
       <Stack.Screen
         name="Photos"
         component={PhotoScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Prompt"
+        component={PromptScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ShowPrompt"
+        component={ShowPromptsScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AnswerPrompt"
+        component={AnswerPromptScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Movie"
+        component={MovieRecommendationScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Music"
+        component={SpotifyTopMusicScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Interest"
+        component={InterestsScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Description"
+        component={OneWordScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MemeScreen"
+        component={MemeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="BioScreen"
+        component={BioScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

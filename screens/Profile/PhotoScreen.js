@@ -18,7 +18,7 @@ import ProgressBar from '../../components/ProgressBar';
 
 const PhotoScreen = ({navigation}) => {
   const [photos, setPhotos] = useState([]);
-  const currentStep = 9;
+  const currentStep = 12;
   const MAX_PHOTOS = 6;
 
   const handleAddPhoto = () => {

@@ -10,7 +10,7 @@ const CollegeScreen = ({navigation}) => {
   const [college, setCollege] = useState('');
   const [course, setCourse] = useState('');
   const [workPosition, setWorkPosition] = useState('');
-  const currentStep = 7;
+  const currentStep = 8;
 
   return (
     <SafeAreaView style={styles.container}>

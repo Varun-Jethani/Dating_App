@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const HomeTownScreen = ({navigation}) => {
   const [hometown, setHometown] = useState('');
-  const currentStep = 6;
+  const currentStep = 7;
 
   return (
     <SafeAreaView style={styles.container}>

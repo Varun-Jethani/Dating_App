@@ -16,7 +16,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const UserInfoForm = ({imageSource, title, subtitle, onNext, inputs}) => {
   const navigation = useNavigation();
+  const handleNext = () => {
+    if (inputs.some(input => input.value === '')) {
+      alert('Please fill all fields');
+      return;
+    }
 
+    navigation.navigate(onNext);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -61,7 +68,7 @@ const UserInfoForm = ({imageSource, title, subtitle, onNext, inputs}) => {
 
           <TouchableOpacity
             style={styles.nextButton}
-            onPress={() => navigation.navigate(onNext)}>
+            onPress={() => handleNext()}>
             <MaterialIcons name="arrow-forward" size={24} color="#fff" />
           </TouchableOpacity>
         </ScrollView>

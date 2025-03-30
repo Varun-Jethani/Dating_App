@@ -1,20 +1,16 @@
-import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {useNavigation} from '@react-navigation/native';
+import {StyleSheet, View, TextInput, Text, Alert} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import React, {useEffect, useState} from 'react';
 
-const BirthScreen = () => {
+import Header from '../../components/Header';
+import NextButton from '../../components/NextButton';
+import ProgressBar from '../../components/ProgressBar';
+import {
+  getRegistrationProgress,
+  saveRegistrationProgress,
+} from '../../registrationutils';
+import {useNavigation} from '@react-navigation/native';
+const BirthScreen = ({}) => {
   const [day, setDay] = useState('');
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
@@ -48,88 +44,76 @@ const BirthScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.keyboardAvoid}>
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={require('../../assets/Img-1.png')}
-              style={styles.image}
-              resizeMode="contain"
-            />
-          </View>
-
-          <View style={styles.contentContainer}>
-            <Text style={styles.title}>What's Your Birthday?</Text>
-            <Text style={styles.subtitle}>Let's make it happen.</Text>
-
-            <View style={styles.dateContainer}>
-              {/* Date input with improved layout */}
-              <View style={styles.dateInputContainer}>
-                <View style={styles.dateBox}>
-                  <TextInput
-                    ref={dayRef}
-                    style={styles.dateInput}
-                    placeholder="DD"
-                    placeholderTextColor="#AAA"
-                    value={day}
-                    onChangeText={handleDayChange}
-                    keyboardType="numeric"
-                    maxLength={2}
-                    selectTextOnFocus
-                  />
-                  <Text style={styles.dateLabel}>Day</Text>
-                </View>
-
-                <Text style={styles.dateSeparator}>/</Text>
-
-                <View style={styles.dateBox}>
-                  <TextInput
-                    ref={monthRef}
-                    style={styles.dateInput}
-                    placeholder="MM"
-                    placeholderTextColor="#AAA"
-                    value={month}
-                    onChangeText={handleMonthChange}
-                    keyboardType="numeric"
-                    maxLength={2}
-                    selectTextOnFocus
-                  />
-                  <Text style={styles.dateLabel}>Month</Text>
-                </View>
-
-                <Text style={styles.dateSeparator}>/</Text>
-
-                <View style={[styles.dateBox, styles.yearBox]}>
-                  <TextInput
-                    ref={yearRef}
-                    style={styles.dateInput}
-                    placeholder="YYYY"
-                    placeholderTextColor="#AAA"
-                    value={year}
-                    onChangeText={setYear}
-                    keyboardType="numeric"
-                    maxLength={4}
-                    selectTextOnFocus
-                  />
-                  <Text style={styles.dateLabel}>Year</Text>
-                </View>
+      <View style={styles.contentContainer}>
+        <Header
+          iconName="account"
+          title="Tell us about yourself"
+          subtitle="We need a few details to get started"
+        />
+        <View style={styles.inputsContainer}>
+          <View style={styles.dateContainer}>
+            {/* Date input with improved layout */}
+            <View style={styles.dateInputContainer}>
+              <View style={styles.dateBox}>
+                <TextInput
+                  ref={dayRef}
+                  style={styles.dateInput}
+                  placeholder="DD"
+                  placeholderTextColor="#AAA"
+                  value={day}
+                  onChangeText={handleDayChange}
+                  keyboardType="numeric"
+                  maxLength={2}
+                  selectTextOnFocus
+                />
+                <Text style={styles.dateLabel}>Day</Text>
               </View>
 
-              <Text style={styles.ageNote}>
-                You must be at least 18 years old to use this app
-              </Text>
-            </View>
-          </View>
+              <Text style={styles.dateSeparator}>/</Text>
 
-          <TouchableOpacity
-            style={styles.nextButton}
-            onPress={() => navigation.navigate('Location')}>
-            <MaterialIcons name="arrow-forward" size={24} color="#fff" />
-          </TouchableOpacity>
-        </ScrollView>
-      </KeyboardAvoidingView>
+              <View style={styles.dateBox}>
+                <TextInput
+                  ref={monthRef}
+                  style={styles.dateInput}
+                  placeholder="MM"
+                  placeholderTextColor="#AAA"
+                  value={month}
+                  onChangeText={handleMonthChange}
+                  keyboardType="numeric"
+                  maxLength={2}
+                  selectTextOnFocus
+                />
+                <Text style={styles.dateLabel}>Month</Text>
+              </View>
+
+              <Text style={styles.dateSeparator}>/</Text>
+
+              <View style={[styles.dateBox, styles.yearBox]}>
+                <TextInput
+                  ref={yearRef}
+                  style={styles.dateInput}
+                  placeholder="YYYY"
+                  placeholderTextColor="#AAA"
+                  value={year}
+                  onChangeText={setYear}
+                  keyboardType="numeric"
+                  maxLength={4}
+                  selectTextOnFocus
+                />
+                <Text style={styles.dateLabel}>Year</Text>
+              </View>
+            </View>
+
+            <Text style={styles.ageNote}>
+              You must be at least 18 years old to use this app
+            </Text>
+          </View>
+        </View>
+      </View>
+      <NextButton
+        onPress={handleNext}
+        disabled={isLoading || !fullName || !email || !phoneNumber}
+      />
     </SafeAreaView>
   );
 };
@@ -141,37 +125,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  keyboardAvoid: {
-    flex: 1,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-    position: 'relative',
-  },
-  imageContainer: {
-    width: '100%',
-    height: 220,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  image: {
-    width: '80%',
-    height: '80%',
+  inputsContainer: {
+    marginTop: 20,
+    gap: 15,
   },
   contentContainer: {
-    paddingHorizontal: 24,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#222',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#999',
-    marginBottom: 40,
+    marginTop: 20,
+    marginHorizontal: 20,
+    flex: 1,
   },
   dateContainer: {
     marginTop: 10,
@@ -215,21 +176,5 @@ const styles = StyleSheet.create({
     color: '#999',
     textAlign: 'center',
     marginTop: 20,
-  },
-  nextButton: {
-    position: 'absolute',
-    bottom: 30,
-    right: 20,
-    backgroundColor: '#000',
-    height: 50,
-    width: 50,
-    borderRadius: 28,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // elevation: 4,
-    // shadowColor: '#000',
-    // shadowOffset: {width: 0, height: 2},
-    // shadowOpacity: 0.2,
-    // shadowRadius: 4,
   },
 });

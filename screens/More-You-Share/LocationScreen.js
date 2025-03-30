@@ -111,7 +111,7 @@ const LocationScreen = ({navigation}) => {
         </Text>
       </View>
       <NextButton onPress={() => navigation.navigate('Gender')} />
-      {/* <NextButton onPress={() => navigation.navigate('Photos')} /> */}
+      {/* <NextButton onPress={() => navigation.navigate('BioScreen')} /> */}
     </SafeAreaView>
   );
 };
